@@ -1,4 +1,4 @@
-# requireg
+# requireg [![Build Status](https://secure.travis-ci.org/h2non/node-requireg.png?branch=master)](http://travis-ci.org/h2non/node-requireg)
 
 > Require global modules in node.js like a boss
 
