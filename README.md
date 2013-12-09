@@ -29,10 +29,19 @@ $ npm install requireg --save[-dev]
 
 ## Usage
 
+### Load global modules
+
 ```js
 var requireg = require('requireg')
 // require a globally installed package
-var coffee = requireg('coffee-script')
+var npm = requireg('npm')
+```
+
+### Resolve module path
+
+```js
+var modulePath = requireg.resolve('npm')
+// returns '/usr/local/lib/node_modules/npm/lib/npm.js'
 ```
 
 ### Globalize it
@@ -44,7 +53,7 @@ require('requireg').globalize()
 Now it is globally available from any source file
 
 ```js
-var globalModule = requireg('coffee-script')
+var globalModule = requireg('npm')
 ```
 
 ### Module not found
