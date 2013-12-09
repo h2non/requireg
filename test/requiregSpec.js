@@ -1,6 +1,9 @@
 var expect = require('expect.js')
 var requiregModule = require('../lib/requireg')
 
+var homeVar = process.platform === 'win32' ? 'USERPROFILE' : 'HOME'
+var homePath = process.env[homeVar]
+
 describe('requireg', function () {
 
   it('should be a function', function () {
@@ -29,6 +32,55 @@ describe('requireg', function () {
   })
 
   describe('global modules', function () {
+
+    describe('resolve via NODE_PATH', function () {
+
+      before(function () {
+        process.env.NODE_PATH = __dirname + '/fixtures/lib'
+      })
+
+      after(function () {
+        process.env.NODE_PATH = ''
+      })
+
+      it('should resolve the beaker package', function () {
+        expect(requiregModule('beaker')).to.be.true
+      })
+
+    })
+
+    describe('resolve via $HOME', function () {
+
+      before(function () {
+        process.env[homeVar] = __dirname + '/fixtures/lib'
+      })
+
+      after(function () {
+        process.env[homeVar] = homePath
+      })
+
+      it('should resolve the beaker package', function () {
+        expect(requiregModule('beaker')).to.be.true
+      })
+
+    })
+
+    describe('resolve via node execution path', function () {
+      var execPath = process.execPath
+
+      before(function () {
+        process.execPath = __dirname + '/fixtures/bin/node'
+      })
+
+      after(function () {
+        process.execPath = execPath
+      })
+
+      it('should resolve the beaker package', function () {
+        expect(requiregModule('beaker')).to.be.true
+      })
+
+    })
 
   })
 
