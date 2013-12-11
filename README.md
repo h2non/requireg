@@ -73,5 +73,9 @@ I hope you know exactly what you do with `requireg`
 - Custom environment variable with custom path to resolve global modules
 - Possible configuration object (force to use only global modules...)
 
+## License
+
+Released under MIT license
+
 [1]: http://nodejs.org/docs/latest/api/modules.html#modules_all_together
 
