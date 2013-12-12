@@ -30,7 +30,8 @@
     "npm",
     "modules",
     "module",
-    "require"
+    "require",
+    "import"
   ],
   "dependencies": {
     "resolve": "~0.6.1"
