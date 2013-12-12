@@ -70,6 +70,22 @@ describe('requireg', function () {
 
     })
 
+    describe('resolve via $NODE_MODULES', function () {
+
+      before(function () {
+        process.env.NODE_MODULES = __dirname + '/fixtures/lib'
+      })
+
+      after(function () {
+        process.env.NODE_MODULES = homePath
+      })
+
+      it('should resolve the beaker package', function () {
+        expect(requiregModule('beaker')).to.be.true
+      })
+
+    })
+
     describe('resolve via node execution path', function () {
       var execPath = process.execPath
 

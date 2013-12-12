@@ -13,13 +13,15 @@ Supported locations:
 - $HOME/node_libraries (instead of $HOME/.node_libraries)
 - $HOME/node_packages (specific of `requireg`)
 - $PREFIX/lib/node_modules (instead of $PREFIX/lib/node)
+- $NODE_MODULES (use the specific modules path environment variable)
 
 ## Resolution priority
 
 1. Resolve via native `require()`
 2. User home directory (`$HOME` or `%USERPROFILE%`)
 3. Node installation path
-4. Common operative system installation paths
+4. $NODE_MODULES (can have different multiple paths, semicolon separated)
+5. Common operative system installation paths
 
 ## Installation
 
