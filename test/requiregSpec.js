@@ -77,7 +77,7 @@ describe('requireg', function () {
       })
 
       after(function () {
-        process.env.NODE_MODULES = homePath
+        process.env.NODE_MODULES = ''
       })
 
       it('should resolve the beaker package', function () {
