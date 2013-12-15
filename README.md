@@ -1,6 +1,6 @@
 # requireg 
-[![Build Status](https://secure.travis-ci.org/h2non/requireg.png?branch=master)][travis]
-[![NPM version](https://badge.fury.io/js/requireg.png)][npm]
+[![Build Status](https://secure.travis-ci.org/h2non/requireg.png?branch=master)][2]
+[![NPM version](https://badge.fury.io/js/requireg.png)][3]
 
 > Require global modules in node.js like a boss
 
@@ -82,6 +82,6 @@ I hope you know exactly what you do with `requireg`
 Released under MIT license
 
 [1]: http://nodejs.org/docs/latest/api/modules.html#modules_all_together
-[travis]: http://travis-ci.org/h2non/requireg
-[npm]: http://badge.fury.io/js/requireg
+[2]: http://travis-ci.org/h2non/requireg
+[3]: http://badge.fury.io/js/requireg
 
