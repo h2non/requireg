@@ -1,6 +1,6 @@
 {
   "name": "requireg",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Require global modules like a boss",
   "homepage": "http://github.com/h2non/requireg",
   "bugs": "https://github.com/h2non/requireg/issues",
@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "mocha": "~1.15.1",
-    "expect.js": "~0.2.0"
+    "expect.js": "~0.2.0",
+    "semver": "~2.2.1"
   }
 }
