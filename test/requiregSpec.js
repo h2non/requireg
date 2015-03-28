@@ -113,6 +113,32 @@ describe('requireg', function () {
 
     })
 
+    describe('resolve via npm prefix', function () {
+      var rc = require('rc')
+
+      before(function () {
+        resolvers.__set__('rc', function () {
+          return {
+            prefix: __dirname + '/fixtures'
+          }
+        })
+      })
+
+      after(function () {
+        resolvers.__set__('rc', rc)
+      })
+
+      it('should resolve the beaker package', function () {
+        expect(requiregModule('beaker')).to.be.true
+      })
+
+      it('should have the expected module path', function () {
+        expect(requiregModule.resolve('beaker'))
+          .to.be.equal(__dirname + '/fixtures/lib/node_modules/beaker/index.js')
+      })
+
+    })
+
   })
 
 })
