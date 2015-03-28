@@ -1,8 +1,6 @@
-# requireg 
-[![Build Status](https://secure.travis-ci.org/h2non/requireg.png?branch=master)][2]
-[![NPM version](https://badge.fury.io/js/requireg.png)][3]
+# requireg  [![Build Status](https://secure.travis-ci.org/h2non/requireg.png?branch=master)][2] [![NPM version](https://badge.fury.io/js/requireg.png)][3]
 
-> Require global modules in node.js like a boss
+Require and resolve global modules in node/io.js like a boss
 
 ## Differences with require()
 
