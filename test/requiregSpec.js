@@ -3,7 +3,8 @@ var resolvers = require('rewire')('../lib/resolvers')
 require.cache[require.resolve('../lib/resolvers')] = { exports: resolvers }
 var requiregModule = require('../lib/requireg')
 
-var homeVar = process.platform === 'win32' ? 'USERPROFILE' : 'HOME'
+var isWin32 = process.platform === 'win32'
+var homeVar = isWin32 ? 'USERPROFILE' : 'HOME'
 var homePath = process.env[homeVar]
 
 describe('requireg', function () {
@@ -119,7 +120,7 @@ describe('requireg', function () {
       before(function () {
         resolvers.__set__('rc', function () {
           return {
-            prefix: __dirname + '/fixtures'
+            prefix: __dirname + (isWin32 ? '/fixtures/lib' : '/fixtures')
           }
         })
       })
