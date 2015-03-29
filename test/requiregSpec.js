@@ -1,4 +1,6 @@
 var expect = require('expect.js')
+var resolvers = require('rewire')('../lib/resolvers')
+require.cache[require.resolve('../lib/resolvers')] = { exports: resolvers }
 var requiregModule = require('../lib/requireg')
 
 var homeVar = process.platform === 'win32' ? 'USERPROFILE' : 'HOME'
@@ -88,13 +90,42 @@ describe('requireg', function () {
 
     describe('resolve via node execution path', function () {
       var execPath = process.execPath
+      var rc = require('rc')
 
       before(function () {
         process.execPath = __dirname + '/fixtures/bin/node'
+        resolvers.__set__('rc', function () { return {} })
       })
 
       after(function () {
         process.execPath = execPath
+        resolvers.__set__('rc', rc)
+      })
+
+      it('should resolve the beaker package', function () {
+        expect(requiregModule('beaker')).to.be.true
+      })
+
+      it('should have the expected module path', function () {
+        expect(requiregModule.resolve('beaker'))
+          .to.be.equal(__dirname + '/fixtures/lib/node_modules/beaker/index.js')
+      })
+
+    })
+
+    describe('resolve via npm prefix', function () {
+      var rc = require('rc')
+
+      before(function () {
+        resolvers.__set__('rc', function () {
+          return {
+            prefix: __dirname + '/fixtures'
+          }
+        })
+      })
+
+      after(function () {
+        resolvers.__set__('rc', rc)
       })
 
       it('should resolve the beaker package', function () {

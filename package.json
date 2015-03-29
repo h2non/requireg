@@ -41,6 +41,7 @@
   "devDependencies": {
     "mocha": "~1.15.1",
     "expect.js": "~0.2.0",
+    "rewire": "~2.3.1",
     "semver": "~2.2.1"
   }
 }
