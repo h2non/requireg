@@ -1,6 +1,6 @@
 {
   "name": "requireg",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Require and resolve global modules like a boss",
   "homepage": "http://github.com/h2non/requireg",
   "bugs": "https://github.com/h2non/requireg/issues",
@@ -8,6 +8,10 @@
     {
       "name": "Tomas Aparicio",
       "email": "tomas@aparicio.me"
+    },
+    {
+      "name": "Eugene Sharygin",
+      "url": "https://github.com/eush77"
     }
   ],
   "repository": {
