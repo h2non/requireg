@@ -1,3 +1,5 @@
+var path = require('path');
+
 var expect = require('expect.js')
 var resolvers = require('rewire')('../lib/resolvers')
 require.cache[require.resolve('../lib/resolvers')] = { exports: resolvers }
@@ -14,7 +16,7 @@ describe('requireg', function () {
   })
 
   describe('requireg API', function () {
-    
+
     it('should globalize', function () {
       requiregModule.globalize()
       expect(requireg).to.be.a('function')
@@ -39,7 +41,7 @@ describe('requireg', function () {
     describe('resolve via NODE_PATH', function () {
 
       before(function () {
-        process.env.NODE_PATH = __dirname + '/fixtures/lib'
+        process.env.NODE_PATH = path.join(__dirname, 'fixtures', 'lib');
       })
 
       after(function () {
@@ -52,15 +54,15 @@ describe('requireg', function () {
 
       it('should have the expected module path', function () {
         expect(requiregModule.resolve('beaker'))
-          .to.be.equal(__dirname + '/fixtures/lib/node_modules/beaker/index.js')
-      }) 
+          .to.be.equal(path.join(__dirname, 'fixtures', 'lib', 'node_modules', 'beaker', 'index.js'))
+      })
 
     })
 
     describe('resolve via $HOME', function () {
 
       before(function () {
-        process.env[homeVar] = __dirname + '/fixtures/lib'
+        process.env[homeVar] = path.join(__dirname, 'fixtures', 'lib')
       })
 
       after(function () {
@@ -76,7 +78,7 @@ describe('requireg', function () {
     describe('resolve via $NODE_MODULES', function () {
 
       before(function () {
-        process.env.NODE_MODULES = __dirname + '/fixtures/lib'
+        process.env.NODE_MODULES = path.join(__dirname, 'fixtures', 'lib')
       })
 
       after(function () {
@@ -94,13 +96,11 @@ describe('requireg', function () {
       var rc = require('rc')
 
       before(function () {
-        process.execPath = __dirname + '/fixtures/bin/node'
-        resolvers.__set__('rc', function () { return {} })
+        process.execPath = path.join(__dirname, 'fixtures', (isWin32 ? 'lib' : 'bin'), 'node')
       })
 
       after(function () {
         process.execPath = execPath
-        resolvers.__set__('rc', rc)
       })
 
       it('should resolve the beaker package', function () {
@@ -109,7 +109,7 @@ describe('requireg', function () {
 
       it('should have the expected module path', function () {
         expect(requiregModule.resolve('beaker'))
-          .to.be.equal(__dirname + '/fixtures/lib/node_modules/beaker/index.js')
+          .to.be.equal(path.join(__dirname, 'fixtures', 'lib', 'node_modules', 'beaker', 'index.js'))
       })
 
     })
@@ -120,7 +120,7 @@ describe('requireg', function () {
       before(function () {
         resolvers.__set__('rc', function () {
           return {
-            prefix: __dirname + (isWin32 ? '/fixtures/lib' : '/fixtures')
+            prefix: path.join(__dirname, 'fixtures', (isWin32 ? 'lib' : ''))
           }
         })
       })
@@ -135,7 +135,7 @@ describe('requireg', function () {
 
       it('should have the expected module path', function () {
         expect(requiregModule.resolve('beaker'))
-          .to.be.equal(__dirname + '/fixtures/lib/node_modules/beaker/index.js')
+          .to.be.equal(path.join(__dirname, 'fixtures', 'lib', 'node_modules', 'beaker', 'index.js'))
       })
 
     })
