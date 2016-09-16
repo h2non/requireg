@@ -27,7 +27,7 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "make test"
+    "test": "mocha -u tdd --ui exports --reporter spec --slow 2000ms --bail"
   },
   "keywords": [
     "global",
