@@ -96,13 +96,11 @@ describe('requireg', function () {
       var rc = require('rc')
 
       before(function () {
-        process.execPath = path.join(__dirname, 'fixtures', 'lib', 'node')
-        resolvers.__set__('rc', function () { return {} })
+        process.execPath = path.join(__dirname, 'fixtures', (isWin32 ? 'lib' : 'bin'), 'node')
       })
 
       after(function () {
         process.execPath = execPath
-        resolvers.__set__('rc', rc)
       })
 
       it('should resolve the beaker package', function () {
