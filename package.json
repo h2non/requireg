@@ -40,11 +40,11 @@
   ],
   "dependencies": {
     "nested-error-stacks": "~2.0.0",
-    "rc": "~1.0.0",
-    "resolve": "~0.6.1"
+    "rc": "~1.2.7",
+    "resolve": "~1.7.1"
   },
   "devDependencies": {
-    "mocha": "~1.15.1",
+    "mocha": "~5.2.0",
     "expect.js": "~0.2.0",
     "rewire": "~2.3.1",
     "semver": "~4.3.2"
