@@ -1,11 +1,13 @@
 # requireg  [![Build Status](https://secure.travis-ci.org/h2non/requireg.png?branch=master)][2] [![NPM version](https://badge.fury.io/js/requireg.png)][3]
 
-Require and resolve global modules in node/io.js like a boss
+Require and resolve global modules in node.js like a boss.
 
 ## Differences with require()
 
 `requireg` tries to find modules in global locations which are
-not natively supported by the node.js [module resolve algorithm][1].
+not natively supported by the node.js [module resolve algorithm][1]. 
+
+It support both npm/yarn global packages installation paths.
 
 Supported locations:
 
@@ -25,9 +27,17 @@ Supported locations:
 
 ## Installation
 
-```
+```bash
 $ npm install requireg --save[-dev]
 ```
+
+```bash
+$ yarn add requireg
+```
+
+## API
+
+### requireg(path: string, onlyGlobal: boolean = false)
 
 ## Usage
 
@@ -73,10 +83,10 @@ It will throw an `Error` exception if the module was not found
 
 ## Considerations
 
-- Require global modules in node.js are considered anti-pattern.
+- Require global modules in node.js is considered anti-pattern.
 Note that you can experiment unreliability or inconsistency across different environments.
 I hope you know exactly what you do with `requireg`
-- Only node packages installed with [NPM](https://npmjs.org) are supported (which means only standardized NPM paths are supported)
+- Only node packages installed with [npm](https://npmjs.org) or [yarn](https://yarnpkg.com) are supported (which means only standardized NPM paths are supported)
 
 ## Wish list
 
