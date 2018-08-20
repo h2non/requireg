@@ -38,6 +38,14 @@ describe('requireg', function () {
 
   describe('global modules', function () {
 
+    describe('resolve only global', function () {
+
+      it('should not resolve a local module', function () {
+        expect(function () { requiregModule('expect.js', true) }).to.throwError()
+      })
+
+    })
+
     describe('resolve via NODE_PATH', function () {
 
       before(function () {
