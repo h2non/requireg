@@ -5,7 +5,7 @@ Require and resolve global modules in node/io.js like a boss
 ## Differences with require()
 
 `requireg` tries to find modules in global locations which are
-not natively supported by the node.js [module resolve algorithm][1]. 
+not natively supported by the node.js [module resolve algorithm][1].
 
 Supported locations:
 
@@ -17,7 +17,7 @@ Supported locations:
 
 ## Resolution priority
 
-1. Resolve via native `require()`
+1. Resolve via native `require()` (unless second parameter is true)
 2. User home directory (`$HOME` or `%USERPROFILE%`)
 3. Node installation path
 4. $NODE_MODULES (can have different multiple paths, semicolon separated)
@@ -37,6 +37,14 @@ $ npm install requireg --save[-dev]
 var requireg = require('requireg')
 // require a globally installed package
 var npm = requireg('npm')
+```
+
+### Load only global modules
+
+```js
+var requireg = require('requireg')
+// require a globally installed package and skip local packages
+var eslint = requireg('eslint', true)
 ```
 
 ### Resolve module path
@@ -60,12 +68,12 @@ var globalModule = requireg('npm')
 
 ### Module not found
 
-`requireg` maintains the same behavior as the native `require()`. 
+`requireg` maintains the same behavior as the native `require()`.
 It will throw an `Error` exception if the module was not found
 
 ## Considerations
 
-- Require global modules in node.js are considered anti-pattern. 
+- Require global modules in node.js are considered anti-pattern.
 Note that you can experiment unreliability or inconsistency across different environments.
 I hope you know exactly what you do with `requireg`
 - Only node packages installed with [NPM](https://npmjs.org) are supported (which means only standardized NPM paths are supported)
@@ -82,4 +90,3 @@ Released under MIT license
 [1]: http://nodejs.org/docs/latest/api/modules.html#modules_all_together
 [2]: http://travis-ci.org/h2non/requireg
 [3]: http://badge.fury.io/js/requireg
-
