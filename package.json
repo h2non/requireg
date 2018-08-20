@@ -1,6 +1,6 @@
 {
   "name": "requireg",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "Require and resolve global modules like a boss",
   "homepage": "http://github.com/h2non/requireg",
   "bugs": "https://github.com/h2non/requireg/issues",
