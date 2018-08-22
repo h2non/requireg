@@ -88,10 +88,9 @@ Note that you can experiment unreliability or inconsistency across different env
 I hope you know exactly what you do with `requireg`
 - Only node packages installed with [npm](https://npmjs.org) or [yarn](https://yarnpkg.com) are supported (which means only standardized NPM paths are supported)
 
-## Wish list
+## Possible extra features
 
-- Custom environment variable with custom path to resolve global modules
-- Possible configuration object (force to use only global modules...)
+- Custom environment variable with custom path to resolve global modules.
 
 ## License
 
