@@ -1,4 +1,5 @@
 var path = require('path');
+var {execSync} = require('child_process');
 
 var expect = require('expect.js')
 var resolvers = require('rewire')('../lib/resolvers')
@@ -41,6 +42,10 @@ describe('requireg', function () {
     describe('resolve only global', function () {
 
       it('should not resolve a local module', function () {
+        // TODO: figure out a better way to test this case
+        // since if user has this module installed globally
+        // (directly, or as a dependency of some other global module)
+        // test will definitely fail
         expect(function () { requiregModule('expect.js', true) }).to.throwError()
       })
 
@@ -101,7 +106,6 @@ describe('requireg', function () {
 
     describe('resolve via node execution path', function () {
       var execPath = process.execPath
-      var rc = require('rc')
 
       before(function () {
         process.execPath = path.join(__dirname, 'fixtures', (isWin32 ? 'lib' : 'bin'), 'node')
@@ -123,18 +127,12 @@ describe('requireg', function () {
     })
 
     describe('resolve via npm prefix', function () {
-      var rc = require('rc')
-
       before(function () {
-        resolvers.__set__('rc', function () {
-          return {
-            prefix: path.join(__dirname, 'fixtures', (isWin32 ? 'lib' : ''))
-          }
-        })
+        process.env.REQUIREG_PREFIX = path.join(__dirname, 'fixtures', (isWin32 ? 'lib' : ''));
       })
 
       after(function () {
-        resolvers.__set__('rc', rc)
+        process.env.REQUIREG_PREFIX = null;
       })
 
       it('should resolve the beaker package', function () {
