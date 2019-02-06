@@ -1,5 +1,5 @@
 var path = require('path');
-var {execSync} = require('child_process');
+var execSync = require('child_process').execSync;
 
 var expect = require('expect.js')
 var resolvers = require('rewire')('../lib/resolvers')
