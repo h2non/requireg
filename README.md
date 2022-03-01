@@ -7,7 +7,7 @@ Require and resolve global modules in node.js like a boss.
 `requireg` tries to find modules in global locations which are
 not natively supported by the node.js [module resolve algorithm][1]. 
 
-It support both npm/yarn global packages installation paths.
+It supports both npm/yarn global packages installation paths.
 
 Supported locations:
 
